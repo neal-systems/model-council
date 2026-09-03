@@ -1,0 +1,17 @@
+{
+  "package_id": "example-package",
+  "objective": "Create a small result file that can be checked independently.",
+  "lane": "standard",
+  "allowed_scope": ["result.txt"],
+  "expected_changes": ["result.txt"],
+  "prohibited_changes": ["README.md"],
+  "acceptance_criteria": [{"id": "AC1", "text": "result.txt contains the expected marker"}],
+  "verification": {
+    "commands": [{"id": "V1", "satisfies": ["AC1"], "cmd": "test -f result.txt && grep -F 'offline pipeline result' result.txt", "expected_exit_code": 0, "expected_stdout_match": "offline pipeline result", "timeout_seconds": 10}],
+    "required_artifacts": [{"path": "result.txt", "must_exist": true, "must_contain": "offline pipeline result"}]
+  },
+  "environment": {"network_required": false, "required_paths": []},
+  "escalation": {"primary_max_failures": 1, "senior_max_failures": 1, "resolver_max_failures": 1, "deterministic_max_failures": 1},
+  "authority": "architect",
+  "contract_version": 1
+}

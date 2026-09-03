@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Council delegation plan",
+  "type": "object",
+  "required": ["parts", "waves", "kept_whole", "operator_decisions"],
+  "additionalProperties": false,
+  "properties": {
+    "parts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["part_id", "question", "acceptance", "depends_on", "treatment"],
+        "additionalProperties": false,
+        "properties": {
+          "part_id": {"type": "string"},
+          "question": {"type": "string"},
+          "acceptance": {"type": "string"},
+          "depends_on": {"type": "array", "items": {"type": "string"}},
+          "treatment": {"enum": ["direct", "council", "pipeline"]}
+        }
+      }
+    },
+    "waves": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}},
+    "kept_whole": {"type": "array", "items": {"type": "string"}},
+    "operator_decisions": {"type": "array", "items": {"type": "string"}}
+  }
+}

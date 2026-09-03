@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Council decision response",
+  "type": "object",
+  "required": ["model", "phase", "positions"],
+  "additionalProperties": true,
+  "properties": {
+    "model": {"type": "string", "minLength": 1},
+    "phase": {"enum": ["initial", "revision"]},
+    "positions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["position_id", "kind", "text", "decisive_factor", "acceptance", "depends_on"],
+        "properties": {
+          "position_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*$"},
+          "kind": {"enum": ["part", "whole"]},
+          "text": {"type": "string", "minLength": 5},
+          "decisive_factor": {"type": "string", "minLength": 5},
+          "acceptance": {"type": "string", "minLength": 5},
+          "depends_on": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        }
+      }
+    }
+  }
+}

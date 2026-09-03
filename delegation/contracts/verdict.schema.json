@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Independent verification verdict",
+  "type": "object",
+  "required": ["package_id", "executor", "attempt", "candidate_sha", "status", "commands_run", "evidence_directory"],
+  "properties": {
+    "package_id": {"type": "string"},
+    "executor": {"enum": ["primary_builder", "senior_builder", "resolver", "deterministic_builder"]},
+    "attempt": {"type": "integer", "minimum": 1},
+    "candidate_sha": {"type": "string", "pattern": "^[0-9a-f]{7,40}$"},
+    "status": {"enum": ["PASS", "FAIL", "BLOCKED"]},
+    "commands_run": {"type": "array"},
+    "failed_criterion": {"type": "string"},
+    "failure_evidence": {"type": "string"},
+    "blocked_defect": {"type": "string"},
+    "blocked_owner": {"enum": ["architect", "owner"]},
+    "changed_files": {"type": "array", "items": {"type": "string"}},
+    "evidence_directory": {"type": "string"}
+  }
+}
