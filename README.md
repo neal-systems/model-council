@@ -94,3 +94,14 @@ Runtime council records go to `.council-runs/` unless `COUNCIL_RUNS` or explicit
 by git.
 
 Copyright (c) 2026 Robert Neal
+
+## About this copy
+
+This is a demonstration copy, published on 2026-09-03 from a private operational
+tools suite that the author runs daily. The public copy is complete and runs
+offline with deterministic fake seats; it carries its own 27-test suite. The
+private suite behind it held 324 offline tests at its 2026-08-18 handoff and
+includes the vendor lanes, the delegation planner, and a document scorer that
+reused the council's voting reviewers over 536 documents pulled from six external
+APIs (125 tests). Those figures describe the private suite, not this copy, and
+are the ones cited on the author's resume.
